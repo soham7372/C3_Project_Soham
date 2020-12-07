@@ -74,6 +74,25 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    //<<<<<<<<Calculate Total Amount of Selected Items >>>>>>>
+
+    @Test
+    public void adding_item_to_menu_shoudl_display_total_amount(){
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        List<Item> menu = restaurant.getMenu();
+        int total=restaurant.calculateTotal(menu);
+        assertEquals(388,total);
+        }
+
+
+    @Test
+    public void when_no_items_added_should_return_zero(){
+    List<Item> menu = restaurant.getMenu();
+    int total = restaurant.calculateTotal(menu);
+    assertEquals(0,total);
+    }
 
     
 }
